@@ -5,25 +5,40 @@ var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 var specialCharacters = ['!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~'];
 
 function generatePassword() {
-  console.log("Button Pressed!")
+  var includedCharacters = [];
+  var generatedPassword = "";
 
   // 1. Prompt the user for the password criteria
   var userInput = window.prompt("How many characters would you like your password to contain?");
   
   //    a. Password length between 8 and 128
   if (userInput >= 8 && userInput <= 128) {
-    console.log("ACCEPTED!");
-    console.log(lowerCase);
-    console.log(upperCase);
-    console.log(numbers);
-    console.log(specialCharacters);
+
+    //    b. Lowercase, Uppercase, Numbers, Special Characters
+    if (confirm("Would you like your password to contain lower case characters?")) {
+      Array.prototype.push.apply(includedCharacters, lowerCase);
+    }
+
+    if (confirm("Would you like your password to contain upper case characters?")) {
+      Array.prototype.push.apply(includedCharacters, upperCase);
+    }
+
+    if (confirm("Would you like your password to contain numbers?")) {
+      Array.prototype.push.apply(includedCharacters, numbers);
+    }
+
+    if (confirm("Would you like your password to contain any special characters?")) {
+      Array.prototype.push.apply(includedCharacters, specialCharacters);
+    }
+
+    console.log(includedCharacters)
+
 
   } else {
     console.log("NOPE!");
     alert ("Ypur password must be between 8 and 128 characters in length.")
   }
 
-  //    b. Lowercase, Uppercase, Numbers, Special Characters
   // 2. Validate the input
   // 3. Generate password based on criteria
   
