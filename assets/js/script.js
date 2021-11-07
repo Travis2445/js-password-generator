@@ -9,10 +9,10 @@ function generatePassword() {
   var generatedPassword = "";
 
   // 1. Prompt the user for the password criteria
-  var userInput = window.prompt("How many characters would you like your password to contain?");
+  var passwordLength = window.prompt("How many characters would you like your password to contain?");
   
   //    a. Password length between 8 and 128
-  if (userInput >= 8 && userInput <= 128) {
+  if (passwordLength >= 8 && passwordLength <= 128) {
 
     //    b. Lowercase, Uppercase, Numbers, Special Characters
     if (confirm("Would you like your password to contain lower case characters?")) {
@@ -31,12 +31,21 @@ function generatePassword() {
       Array.prototype.push.apply(includedCharacters, specialCharacters);
     }
 
-    console.log(includedCharacters)
+    if (includedCharacters.length === 0) {
+      alert("You need to include atleast 1 type of character for the password generator!")
+      generatePassword();
+    }
 
+    for (var i = 0; i < passwordLength; i++) {
+      var random = Math.floor(Math.random() * includedCharacters.length);
+      generatedPassword += includedCharacters[random];
+    }
+
+    console.log(generatedPassword);
 
   } else {
     console.log("NOPE!");
-    alert ("Ypur password must be between 8 and 128 characters in length.")
+    alert ("Your password must be between 8 and 128 characters in length.")
   }
 
   // 2. Validate the input
