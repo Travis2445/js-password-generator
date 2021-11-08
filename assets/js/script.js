@@ -31,28 +31,29 @@ function generatePassword() {
       Array.prototype.push.apply(includedCharacters, specialCharacters);
     }
 
+    // 2. Validate the input
     if (includedCharacters.length === 0) {
       alert("You need to include atleast 1 type of character for the password generator!")
       generatePassword();
     }
 
+    // 3. Generate password based on criteria
     for (var i = 0; i < passwordLength; i++) {
       var random = Math.floor(Math.random() * includedCharacters.length);
       generatedPassword += includedCharacters[random];
     }
 
-    console.log(generatedPassword);
-
+    // 4. Display password to the page
+    return generatedPassword;
+    
+    
   } else {
     console.log("NOPE!");
     alert ("Your password must be between 8 and 128 characters in length.")
   }
-
-  // 2. Validate the input
-  // 3. Generate password based on criteria
   
-  // 4. Display password to the page
-  return "Generated password will go here!"
+  
+  console.log(pass);
 }
 
 
